@@ -60,3 +60,17 @@ describe("Sample Test", () => {
     expect(true).toBe(true);
   });
 });
+
+describe("Crossword grid test", () => {
+  test("Testing Grid Creation", () => {
+    const { result } = renderHook(Crossword);
+
+    act(() => {
+      result.current.createGrid();
+    });
+
+    console.log(result.current.wordGrid);
+
+    expect(result.current.wordGrid).toMatchObject(crosswordGrid);
+  });
+});
