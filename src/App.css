@@ -24,6 +24,7 @@
   height: 40px;
   font-size: x-large;
   color: #000;
+  margin-right: 10px;
 }
 
 .correctBox {
@@ -72,5 +73,15 @@
   text-align: center;
 }
 
-/* Create your grid stlying here.
+/* Create your grid styling here.
 You can use the styling above for help. */
+
+.GridContainer {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.GridChild {
+  width: 90px;
+  height: 90px;
+}

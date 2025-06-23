@@ -4,9 +4,44 @@ import { Crossword } from "./Crossword";
 
 function App() {
   const { handleOutput, wordGrid, createGrid } = Crossword();
-  // console.log(createGrid());
 
-  return <div className="App"></div>;
+  return (
+    <div className="App">
+      <header>
+        <h1 className={"Title"}>Crossword puzzle</h1>
+      </header>
+      <div className="GridContainer">
+        {wordGrid.map((box, index) => (
+          <div className={"GridChild"} key={index}>
+            {box.char === "." ? (
+              <p></p>
+            ) : (
+              <div>
+                {box.status === "C" ? (
+                  <input
+                    className={".correctBox"}
+                    maxLength={1}
+                    type={"text"}
+                    value={box.char}
+                    onChange={(event) => handleOutput(event, index)}
+                  />
+                ) : (
+                  <input
+                    className={"inputBox"}
+                    maxLength={1}
+                    type={"text"}
+                    value={box.char}
+                    placeholder={box.label}
+                    onChange={(event) => handleOutput(event, index)}
+                  />
+                )}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
 
 export default App;
