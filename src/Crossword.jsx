@@ -20,6 +20,24 @@ export const Crossword = () => {
     { pos: "A42", word: "CORES" },
   ];
 
+  const hintList = [
+    {
+      direction: "Down",
+      label: 1,
+      hint: "Development Framework being used for this project.",
+    },
+    { direction: "Down", label: 2, hint: "Popular Blue Bird" },
+    { direction: "Down", label: 4, hint: "Repitition of sound." },
+    {
+      direction: "Across",
+      label: 1,
+      hint: "Testing Framework being used for this project.",
+    },
+    { direction: "Across", label: 3, hint: "Pictures" },
+    { direction: "Across", label: 5, hint: "Usually worn with a suit." },
+    { direction: "Across", label: 6, hint: "Found in CPUs and GPUs" },
+  ];
+
   const createGrid = () => {
     let wordLabel = 1;
     const tempArr = new Array(gridSize * gridSize).fill({
@@ -146,5 +164,5 @@ export const Crossword = () => {
     setWordGrid(checkWord);
   };
 
-  return { handleOutput, wordGrid, createGrid, checkGrid };
+  return { handleOutput, wordGrid, createGrid, checkGrid, hintList };
 };

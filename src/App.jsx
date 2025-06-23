@@ -3,7 +3,8 @@ import "./App.css";
 import { Crossword } from "./Crossword";
 
 function App() {
-  const { handleOutput, wordGrid, createGrid, checkGrid } = Crossword();
+  const { handleOutput, wordGrid, createGrid, checkGrid, hintList } =
+    Crossword();
 
   return (
     <div className="App">
@@ -47,6 +48,39 @@ function App() {
         <button className={"cButton"} type={"submit"} onClick={checkGrid}>
           Check
         </button>
+      </div>
+      <div className={"hintsCard"}>
+        <h2 className={"cardTitle"}>Hints</h2>
+        <div>
+          <h3>Down</h3>
+          {hintList.map((word, index) => (
+            <div key={index}>
+              {word.direction === "Down" ? (
+                <div>
+                  <p>
+                    {word.label} - {word.hint}
+                  </p>
+                </div>
+              ) : (
+                <div></div>
+              )}
+            </div>
+          ))}
+          <h3>Across</h3>
+          {hintList.map((word, index) => (
+            <div key={index}>
+              {word.direction === "Across" ? (
+                <div>
+                  <p>
+                    {word.label} - {word.hint}
+                  </p>
+                </div>
+              ) : (
+                <div></div>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
