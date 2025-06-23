@@ -3,7 +3,7 @@ import "./App.css";
 import { Crossword } from "./Crossword";
 
 function App() {
-  const { handleOutput, wordGrid, createGrid } = Crossword();
+  const { handleOutput, wordGrid, createGrid, checkGrid } = Crossword();
 
   return (
     <div className="App">

@@ -81,9 +81,69 @@ export const Crossword = () => {
     setWordGrid(tempArr);
   };
 
-  const handleOutput = (event, index) => {
-    //Create your handleOutput function here
+  const checkGrid = () => {
+    const curWordGrid = [...wordGrid];
+    for (const wordListItem in wordList) {
+      const direction = wordList[wordListItem].pos.at(0);
+      const position = wordList[wordListItem].pos.slice(1);
+      if (direction === "A") {
+        for (const charIndex in wordList[wordListItem].word) {
+          if (
+            wordList[wordListItem].word[charIndex] ===
+            curWordGrid[parseInt(position) + parseInt(charIndex)].char
+          ) {
+            curWordGrid[parseInt(position) + parseInt(charIndex)] = {
+              char: curWordGrid[parseInt(position) + parseInt(charIndex)].char,
+              status: "C",
+              label:
+                curWordGrid[parseInt(position) + parseInt(charIndex)].label,
+            };
+          } else {
+            curWordGrid[parseInt(position) + parseInt(charIndex)] = {
+              char: "",
+              status: "W",
+              label:
+                curWordGrid[parseInt(position) + parseInt(charIndex)].label,
+            };
+          }
+        }
+      } else if (direction === "D") {
+        for (const charIndex in wordList[wordListItem].word) {
+          if (
+            wordList[wordListItem].word[charIndex] ===
+            curWordGrid[parseInt(position) + parseInt(charIndex) * gridSize]
+              .char
+          ) {
+            curWordGrid[parseInt(position) + parseInt(charIndex) * gridSize] = {
+              char: curWordGrid[
+                parseInt(position) + parseInt(charIndex) * gridSize
+              ].char,
+              status: "C",
+              label:
+                curWordGrid[parseInt(position) + parseInt(charIndex) * gridSize]
+                  .label,
+            };
+          } else {
+            curWordGrid[parseInt(position) + parseInt(charIndex) * gridSize] = {
+              char: "",
+              status: "W",
+              label:
+                curWordGrid[parseInt(position) + parseInt(charIndex) * gridSize]
+                  .label,
+            };
+          }
+        }
+      }
+    }
   };
 
-  return { handleOutput, wordGrid, createGrid };
+  const handleOutput = (event, index) => {
+    //Create your handleOutput function here
+    const checkWord = [...wordGrid];
+    checkWord[index].char = event.target.value.toUpperCase();
+    setWordGrid(checkWord);
+    console.log(wordGrid);
+  };
+
+  return { handleOutput, wordGrid, createGrid, checkGrid };
 };
