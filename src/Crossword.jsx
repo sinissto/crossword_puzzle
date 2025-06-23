@@ -135,6 +135,8 @@ export const Crossword = () => {
         }
       }
     }
+
+    setWordGrid(curWordGrid);
   };
 
   const handleOutput = (event, index) => {
@@ -142,7 +144,6 @@ export const Crossword = () => {
     const checkWord = [...wordGrid];
     checkWord[index].char = event.target.value.toUpperCase();
     setWordGrid(checkWord);
-    console.log(wordGrid);
   };
 
   return { handleOutput, wordGrid, createGrid, checkGrid };

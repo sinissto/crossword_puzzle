@@ -40,6 +40,14 @@ function App() {
           </div>
         ))}
       </div>
+      <div className={"buttonRow"}>
+        <button className={"cButton"} type={"submit"} onClick={createGrid}>
+          Reset
+        </button>
+        <button className={"cButton"} type={"submit"} onClick={checkGrid}>
+          Check
+        </button>
+      </div>
     </div>
   );
 }
