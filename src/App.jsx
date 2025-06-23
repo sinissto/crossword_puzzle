@@ -3,9 +3,10 @@ import "./App.css";
 import { Crossword } from "./Crossword";
 
 function App() {
-  const { handleOutput, wordGrid } = Crossword();
+  const { handleOutput, wordGrid, createGrid } = Crossword();
+  // console.log(createGrid());
 
-  return <div classname="App"></div>;
+  return <div className="App"></div>;
 }
 
 export default App;
